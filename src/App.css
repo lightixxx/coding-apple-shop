@@ -7,6 +7,13 @@
   pointer-events: none;
 }
 
+.background {
+  padding: 32px 16px;
+  background-image: url('./background.jpeg');
+  background-size: cover;
+  color: #ffffff;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
