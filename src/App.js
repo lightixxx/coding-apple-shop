@@ -1,7 +1,12 @@
+// eslint-disable
+import { useState } from 'react'
 import { Navbar, Container, Nav, NavDropdown, Button } from 'react-bootstrap'
 import './App.css'
+import Data from './data'
 
 function App() {
+  const [shoes, shoes변경] = useState(Data)
+
   return (
     <div className="App">
       <Navbar bg="light" expand="lg">
@@ -43,23 +48,27 @@ function App() {
 
       <div className="container">
         <div className="row">
-          <div className="col-md-4">
-            <img src="https://codingapple1.github.io/shop/shoes1.jpg" />
-            <h4>상품명</h4>
-            <p>상품설명 & 가격</p>
-          </div>
-          <div className="col-md-4">
-            <img src="https://codingapple1.github.io/shop/shoes2.jpg" />
-            <h4>상품명</h4>
-            <p>상품설명 & 가격</p>
-          </div>
-          <div className="col-md-4">
-            <img src="https://codingapple1.github.io/shop/shoes2.jpg" />
-            <h4>상품명</h4>
-            <p>상품설명 & 가격</p>
-          </div>
+          {shoes.map((data, i) => {
+            return <Card shoes={data} key={i} />
+          })}
         </div>
       </div>
+    </div>
+  )
+}
+
+const Card = ({ shoes }) => {
+  return (
+    <div className="col-md-4">
+      <img
+        src={
+          'https://codingapple1.github.io/shop/shoes' + (shoes.id + 1) + '.jpg'
+        }
+        className="shoes-image"
+      />
+      <h4>{shoes.title}</h4>
+      <strong>{shoes.price}</strong>
+      <p>{shoes.content}</p>
     </div>
   )
 }
