@@ -1,5 +1,6 @@
 // import { useState } from 'react'
 import { useHistory, useParams } from 'react-router-dom'
+import styled from 'styled-components'
 
 const Detail = ({ shoes }) => {
   let { id } = useParams()
@@ -8,6 +9,14 @@ const Detail = ({ shoes }) => {
   let 찾은상품 = shoes.find((상품) => {
     return 상품.id == id
   })
+
+  let 박스 = styled.div`
+    padding: 20px;
+  `
+  let 제목 = styled.h4`
+    font-size: 25px;
+    color: ${(props) => props.색상};
+  `
 
   return (
     <div className="container">
@@ -33,6 +42,12 @@ const Detail = ({ shoes }) => {
           >
             뒤로가기
           </button>
+
+          <박스>
+            <제목 색상="blue">안녕하세요1</제목>
+            <제목 색상={'red'}>안녕하세요2</제목>
+            <제목 색상={'#0066ff'}>안녕하세요3</제목>
+          </박스>
         </div>
       </div>
     </div>
