@@ -1,4 +1,4 @@
-// import { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useHistory, useParams } from 'react-router-dom'
 import styled from 'styled-components'
 import '../styles/Detail.scss'
@@ -16,6 +16,13 @@ const Detail = ({ shoes }) => {
     font-size: 25px;
     color: ${(props) => props.색상};
   `
+
+  useEffect(() => {
+    //1빠로 실행할 코드
+  })
+  useEffect(() => {
+    //2빠로 실행할 코드
+  })
 
   return (
     <div className="container">
@@ -55,6 +62,15 @@ const Detail = ({ shoes }) => {
       </div>
     </div>
   )
+}
+
+class Detail2 extends React.Component {
+  componentDidMount() {
+    //Detail2 컴포넌트가 Mount 되고나서 실행할 코드
+  }
+  componentWillUnmount() {
+    //Detail2 컴포넌트가 Unmount 되기전에 실행할 코드
+  }
 }
 
 export default Detail
