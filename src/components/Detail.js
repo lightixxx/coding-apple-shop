@@ -6,6 +6,17 @@ import '../styles/Detail.scss'
 const Detail = ({ shoes }) => {
   let { id } = useParams()
   let history = useHistory()
+  const [alert, alert변경] = useState(true)
+  const [inputData, inputData변경] = useState('')
+
+  useEffect(() => {
+    let 타이머 = setTimeout(() => {
+      alert변경(false)
+    }, 2000)
+    return () => {
+      clearTimeout(타이머)
+    }
+  }, [alert])
 
   let 찾은상품 = shoes.find((상품) => 상품.id == id)
 
@@ -16,13 +27,6 @@ const Detail = ({ shoes }) => {
     font-size: 25px;
     color: ${(props) => props.색상};
   `
-
-  useEffect(() => {
-    //1빠로 실행할 코드
-  })
-  useEffect(() => {
-    //2빠로 실행할 코드
-  })
 
   return (
     <div className="container">
@@ -55,9 +59,18 @@ const Detail = ({ shoes }) => {
             <제목 색상={'#0066ff'}>안녕하세요3</제목>
           </박스>
 
-          <div className="my-alert">
-            <p>재고가 얼마 남지 않았습니다</p>
-          </div>
+          {inputData}
+          <input
+            onChange={(e) => {
+              inputData변경(e.target.value)
+            }}
+          />
+
+          {alert === true ? (
+            <div className="my-alert2">
+              <p>재고가 얼마 남지 않았습니다</p>
+            </div>
+          ) : null}
         </div>
       </div>
     </div>
