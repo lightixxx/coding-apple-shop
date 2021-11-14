@@ -4,6 +4,7 @@ import { Navbar, Container, Nav, NavDropdown, Button } from 'react-bootstrap'
 import './App.css'
 import Data from './data'
 import Detail from './components/Detail'
+import axios from 'axios'
 
 import { Link, Route, Switch } from 'react-router-dom'
 
@@ -60,6 +61,21 @@ function App() {
                 return <Card shoes={data} key={i} />
               })}
             </div>
+            <button
+              className="btn btn-primary"
+              onClick={() => {
+                axios
+                  .get('https://codingapple1.github.io/shop/data2.json')
+                  .then((result) => {
+                    console.log(result.data)
+                  })
+                  .catch(() => {
+                    console.log('실패')
+                  })
+              }}
+            >
+              더보기
+            </button>
           </div>
         </Route>
 
