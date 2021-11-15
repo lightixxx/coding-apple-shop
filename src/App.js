@@ -11,6 +11,13 @@ import { Link, Route, Switch } from 'react-router-dom'
 function App() {
   const [shoes, shoes변경] = useState(Data)
 
+  // function shoes복사(json) {
+  //   const newArray = [...shoes]
+  //   // const obj = JSON.parse(json)
+  //   newArray.push(json)
+  //   shoes변경(newArray)
+  // }
+
   return (
     <div className="App">
       <Navbar bg="light" expand="lg">
@@ -64,10 +71,11 @@ function App() {
             <button
               className="btn btn-primary"
               onClick={() => {
+                // axios.post('서버URL', {id: 'lightixxx', pw: '1234'})
                 axios
                   .get('https://codingapple1.github.io/shop/data2.json')
                   .then((result) => {
-                    console.log(result.data)
+                    shoes변경([...shoes, ...result.data])
                   })
                   .catch(() => {
                     console.log('실패')
