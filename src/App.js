@@ -10,13 +10,7 @@ import { Link, Route, Switch } from 'react-router-dom'
 
 function App() {
   const [shoes, shoes변경] = useState(Data)
-
-  // function shoes복사(json) {
-  //   const newArray = [...shoes]
-  //   // const obj = JSON.parse(json)
-  //   newArray.push(json)
-  //   shoes변경(newArray)
-  // }
+  const [재고, 재고변경] = useState([10, 11, 12])
 
   return (
     <div className="App">
@@ -88,7 +82,7 @@ function App() {
         </Route>
 
         <Route path="/detail/:id">
-          <Detail shoes={shoes} />
+          <Detail shoes={shoes} 재고={재고} 재고변경={재고변경} />
         </Route>
 
         <Route path="/:id">

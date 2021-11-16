@@ -3,7 +3,7 @@ import { useHistory, useParams } from 'react-router-dom'
 import styled from 'styled-components'
 import '../styles/Detail.scss'
 
-const Detail = ({ shoes }) => {
+const Detail = ({ shoes, 재고, 재고변경 }) => {
   let { id } = useParams()
   let history = useHistory()
   const [alert, alert변경] = useState(true)
@@ -41,7 +41,14 @@ const Detail = ({ shoes }) => {
           <h4 className="pt-5">{찾은상품.title}</h4>
           <p>{찾은상품.content}</p>
           <p>{찾은상품.price}</p>
-          <button className="btn btn-primary">주문하기</button>
+          <button
+            className="btn btn-primary"
+            onClick={() => {
+              재고변경([9, 10, 11])
+            }}
+          >
+            주문하기
+          </button>
           <button
             className="btn btn-danger"
             onClick={() => {
@@ -71,6 +78,8 @@ const Detail = ({ shoes }) => {
               <p>재고가 얼마 남지 않았습니다</p>
             </div>
           ) : null}
+
+          <Info 재고={재고} />
         </div>
       </div>
     </div>
@@ -84,6 +93,10 @@ class Detail2 extends React.Component {
   componentWillUnmount() {
     //Detail2 컴포넌트가 Unmount 되기전에 실행할 코드
   }
+}
+
+function Info({ 재고 }) {
+  return <p>재고 : {재고[0]}</p>
 }
 
 export default Detail
