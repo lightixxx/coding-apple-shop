@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { useHistory, useParams } from 'react-router-dom'
 import styled from 'styled-components'
 import '../styles/Detail.scss'
+import { 재고context } from '../App.js'
 
 const Detail = ({ shoes, 재고, 재고변경 }) => {
   let { id } = useParams()
   let history = useHistory()
   const [alert, alert변경] = useState(true)
   const [inputData, inputData변경] = useState('')
+  let detail재고 = useContext(재고context)
 
   useEffect(() => {
     let 타이머 = setTimeout(() => {
@@ -80,6 +82,7 @@ const Detail = ({ shoes, 재고, 재고변경 }) => {
           ) : null}
 
           <Info 재고={재고} />
+          {detail재고}
         </div>
       </div>
     </div>
