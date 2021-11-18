@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { useHistory, useParams } from 'react-router-dom'
 import styled from 'styled-components'
+import { Navbar, Container, Nav, NavDropdown, Button } from 'react-bootstrap'
 import '../styles/Detail.scss'
 import { 재고context } from '../App.js'
 
@@ -10,6 +11,7 @@ const Detail = ({ shoes, 재고, 재고변경 }) => {
   const [alert, alert변경] = useState(true)
   const [inputData, inputData변경] = useState('')
   let detail재고 = useContext(재고context)
+  const [누른탭, 누른탭변경] = useState(0)
 
   useEffect(() => {
     let 타이머 = setTimeout(() => {
@@ -33,7 +35,7 @@ const Detail = ({ shoes, 재고, 재고변경 }) => {
   return (
     <div className="container">
       <div className="row">
-        <div className="col-md-6">
+        {/* <div className="col-md-6">
           <img
             src="https://codingapple1.github.io/shop/shoes1.jpg"
             width="100%"
@@ -82,24 +84,69 @@ const Detail = ({ shoes, 재고, 재고변경 }) => {
           ) : null}
 
           <Info 재고={재고} />
-          {detail재고}
+          {detail재고} */}
+
+        <div className="col-md-4">
+          <Nav variant="tabs" defaultActiveKey="link-0">
+            <Nav.Item>
+              <Nav.Link
+                eventKey="link-0"
+                onClick={() => {
+                  누른탭변경(0)
+                }}
+              >
+                Active
+              </Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link
+                eventKey="link-1"
+                onClick={() => {
+                  누른탭변경(1)
+                }}
+              >
+                Option 2
+              </Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link
+                eventKey="link-2"
+                onClick={() => {
+                  누른탭변경(2)
+                }}
+              >
+                Option 3
+              </Nav.Link>
+            </Nav.Item>
+          </Nav>
+          <TabContent 누른탭={누른탭} />
         </div>
       </div>
     </div>
   )
 }
 
-class Detail2 extends React.Component {
-  componentDidMount() {
-    //Detail2 컴포넌트가 Mount 되고나서 실행할 코드
-  }
-  componentWillUnmount() {
-    //Detail2 컴포넌트가 Unmount 되기전에 실행할 코드
+function TabContent({ 누른탭 }) {
+  if (누른탭 === 0) {
+    return <div>내용0</div>
+  } else if (누른탭 === 1) {
+    return <div>내용1</div>
+  } else if (누른탭 === 2) {
+    return <div>내용2</div>
   }
 }
 
-function Info({ 재고 }) {
-  return <p>재고 : {재고[0]}</p>
-}
+// class Detail2 extends React.Component {
+//   componentDidMount() {
+//     //Detail2 컴포넌트가 Mount 되고나서 실행할 코드
+//   }
+//   componentWillUnmount() {
+//     //Detail2 컴포넌트가 Unmount 되기전에 실행할 코드
+//   }
+// }
+
+// function Info({ 재고 }) {
+//   return <p>재고 : {재고[0]}</p>
+// }
 
 export default Detail
