@@ -5,6 +5,7 @@ import { Navbar, Container, Nav, NavDropdown, Button } from 'react-bootstrap'
 import './App.css'
 import Data from './data'
 import Detail from './components/Detail'
+import Cart from './components/Cart'
 import axios from 'axios'
 
 export let 재고context = React.createContext()
@@ -88,6 +89,10 @@ function App() {
           <재고context.Provider value={재고}>
             <Detail shoes={shoes} 재고={재고} 재고변경={재고변경} />
           </재고context.Provider>
+        </Route>
+
+        <Route path="/cart">
+          <Cart />
         </Route>
 
         <Route path="/:id">
