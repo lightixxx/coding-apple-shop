@@ -1,6 +1,6 @@
 // eslint-disable
 import React, { useState, useContext } from 'react'
-import { Link, Route, Switch } from 'react-router-dom'
+import { Link, Route, Switch, useHistory } from 'react-router-dom'
 import { Navbar, Container, Nav, NavDropdown, Button } from 'react-bootstrap'
 import './App.css'
 import Data from './data'
@@ -105,8 +105,15 @@ function App() {
 
 const Card = ({ shoes }) => {
   let 재고 = useContext(재고context)
+  let history = useHistory()
+
   return (
-    <div className="col-md-4">
+    <div
+      className="col-md-4"
+      onClick={() => {
+        history.push('/detail/' + shoes.id)
+      }}
+    >
       <img
         src={
           'https://codingapple1.github.io/shop/shoes' + (shoes.id + 1) + '.jpg'

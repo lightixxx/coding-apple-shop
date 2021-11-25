@@ -3,7 +3,6 @@ import { connect, useSelector, useDispatch } from 'react-redux'
 
 function Cart(props) {
   let state = useSelector((state) => state)
-  console.log(state.reducer)
   let dispatch = useDispatch()
 
   return (
@@ -24,7 +23,7 @@ function Cart(props) {
               <td>
                 <button
                   onClick={() => {
-                    dispatch({ type: '수량증가' })
+                    dispatch({ type: '수량증가', data: a.id })
                   }}
                 >
                   {' '}
@@ -32,7 +31,7 @@ function Cart(props) {
                 </button>
                 <button
                   onClick={() => {
-                    dispatch({ type: '수량감소' })
+                    dispatch({ type: '수량감소', data: a.id })
                   }}
                 >
                   {' '}

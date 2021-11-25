@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react'
 import { useHistory, useParams } from 'react-router-dom'
 import styled from 'styled-components'
 import { Navbar, Container, Nav, NavDropdown, Button } from 'react-bootstrap'
-import { connect } from 'react-redux'
+import { connect, useDispatch } from 'react-redux'
 import '../styles/Detail.scss'
 import { 재고context } from '../App.js'
 
@@ -13,6 +13,7 @@ const Detail = (props) => {
   const [inputData, inputData변경] = useState('')
   let detail재고 = useContext(재고context)
   const [누른탭, 누른탭변경] = useState(0)
+  let dispatch = useDispatch()
 
   useEffect(() => {
     let 타이머 = setTimeout(() => {
@@ -51,9 +52,8 @@ const Detail = (props) => {
             onClick={() => {
               props.dispatch({
                 type: '항목추가',
-                payload: { id: 2, name: '새로운상품', quan: 1 },
+                data: { id: 찾은상품.id, name: 찾은상품.title, quan: 1 },
               })
-              history.push('/cart')
             }}
           >
             주문하기
